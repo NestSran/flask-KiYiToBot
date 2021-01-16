@@ -1,0 +1,26 @@
+PSUEDO CODE
+
+Def Notify_PSC ()
+>>call event date() <Google Calendar>
+>>call dateToday()
+	If dateToday == event Date :
+	   >>notify PSC event 1 day in advance()
+	elif dateToday != event Date :
+	   >>do not notify PSC event
+	else
+	   >>something wrong with system ,please contact your admin
+Notify PSC()
+
+**In case : Edit Event From Google Calendar 1 day/immediately before having PSC Activity
+
+	>>Edit Google Calendar Event()
+Def  Update PSC_Bot()
+	If “¤ÔÂÔâµÐ” and “ÍÑ¾à´µµÒÃÒ§àÇÃ” :
+	>> notify PSC event immediately
+	Else :
+	>> do not notify PSC event
+Update PSC_Bot()	
+
+	
+token :be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on
+1 day = 00.00 am to 17.00pm

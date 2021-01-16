@@ -1,0 +1,43 @@
+channel secret :
+404ab61bb346ce79f9e9dbc3eaa5e4ad
+
+
+Channel Assess Token :
+ve4MtHBnXqxyFK2Uhg5oalJMZJQYMEstRvNjdEFZSTiWk0/hEyNW/X/iJnOssxUpGQ0K4bh1xnhtSR9zNuTjbELgGhjo5IkNeSuYE1OdMheGjtCRaDTw6rAf8BvMwghtAzuNbS60EmMBcBlkUb+jiAdB04t89/1O/w1cDnyilFU=
+
+Bot Basic ID :@899lmkyo
+
+สร้างvirtualenv โดยpython3
+โหลดPython3ก่อน
+1.pip install virtualenv=ติดตั้ง Virtualevn
+2.virtualenv (Project name)=สร้างProject
+3.(Project name)\Scripts\activate=เข้าใช้งานVirtualenv    Note (เข้าProject nameก่อน)แล้วdeactivate
+
+***การที่userจะคุยกับไลน์ได้โดยตรงไม่ได้ต้องผ่านตัวกลางคือ webhook โดยdeveloperจะใช้เฟรมเวิคคือFlaskติดต่อlocal server(webhook)
+ปล.node.js เขาสามารถติดต่อกับไลน์ได้โดยตรง
+
+ติดตั้ง Flask
+1.pip install Flask
+2.pip install requests
+
+ติดตั้ง ngrok เพื่อทำให้เว็บเป็น Publish
+ngrok http port
+
+ทดสอยการPostเข้าLine
+พิมพ์woo
+{'events': [], 'destination': 'Ue1c234b033c037f720d8e75ea0a33ed4'}
+127.0.0.1 - - [12/Dec/2020 10:07:54] "?[37mPOST /webhook HTTP/1.1?[0m" 200 -
+{'events': [{'type': 'message', 'replyToken': 'e35eec6552a14c4fa3a433e26b152ffd', 'source': {'userId': 'U796973eec39dc4408db243819b433873', 'type': 'user'}, 'timestamp': 1607742489408, 'mode': 'active', 'message': {'type': 'text', 'id': '13188172002090', 'text': 'woo'}}], 'destination': 'Ue1c234b033c037f720d8e75ea0a33ed4'}
+127.0.0.1 - - [12/Dec/2020 10:08:13] "?[37mPOST /webhook HTTP/1.1?[0m" 200 -
+
+พิมพ์อะไร
+{'events': [{'type': 'message', 'replyToken': '8a640b10012e4b45b413a4fb37fd1767', 'source': {'userId': 'U796973eec39dc4408db243819b433873', 'type': 'user'}, 'timestamp': 1607742798991, 'mode': 'active', 'message': {'type': 'text', 'id': '13188194924965', 'text': 'อะไร'}}], 'destination': 'Ue1c234b033c037f720d8e75ea0a33ed4'}
+127.0.0.1 - - [12/Dec/2020 10:13:23] "?[37mPOST /webhook HTTP/1.1?[0m" 200 -
+.........................................................................................................
+
+Google Calendar API
+Client ID =1213096575-mt3hgrogm523o73kj90lo4v92ncmhq4d.apps.googleusercontent.com
+Client Secret =1b_vOMFmVCoEINwtLeHx1PGL
+
+
+
