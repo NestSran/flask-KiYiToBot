@@ -5,7 +5,7 @@ import json ##Line Using Json only
 from datetime import datetime,date
 from pprint import pprint
 import sys
-sys.path.append('D:\\Users\PEA\Desktop\KiYiToBot\Calendar')
+
 from Google import Create_Service
 
 
@@ -341,9 +341,11 @@ def notify_PSC():
                 print(r2.text)
         
 
+    
 if list_nowtoday == list_beforedate :
 
     if list_timetoday == list_timeevent:
+    
             notify_PSC()
     else:
         pass
