@@ -11,7 +11,7 @@ Def Notify_PSC ()
 	   >>something wrong with system ,please contact your admin
 Notify PSC()
 
-**In case : Edit Event From Google Calendar 1 day/immediately before having PSC Activity
+**In case : Edit Event From Google Calendar 2 day/immediately before having PSC Activity
 
 	>>Edit Google Calendar Event()
 Def  Update PSC_Bot()
