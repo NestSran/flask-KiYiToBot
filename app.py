@@ -1,4 +1,3 @@
-import os
 from flask import Flask,request,abort
 import requests ##ส่งข้อความกลับLine
 import json ##Line Using Json only
@@ -358,7 +357,6 @@ else:
 
 if __name__== '__main__':
     
-    port = int(os.environ.get("PORT", 200))
-    app.run(host='127.0.0.1', port=port)
+    app.run(debug=True)
     
     
