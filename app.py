@@ -281,30 +281,32 @@ def left_event():
     page_token = None
     while True:
         events = service.events().list(calendarId='saran.kan.pea@gmail.com', pageToken=page_token,timeZone='Asia/Bangkok',timeMin=isoformat,orderBy='startTime',singleEvents=True,maxResults=100).execute()
-        print(events)
-        i=0
+      
         
+        i=0
         for event in events['items']:
-                
-            print(event['start']['dateTime'])    
             
             event_left[i]={}
             
             for x in kyt_queue :    
-                
+                   
                 if x=="Name:" :
                     event_left[i][x]=event['summary']
-                
-                
+                  
                 if x=="Time:" :
-                    event_left[i][x]=event['start']['dateTime'].split("T")[0]
+                    for front,back in event['start'].items():
+                        timevalue= back.split('T')[0]
+                        event_left[i][x]=timevalue
+                    
             
             i+=1
-            
+       
                     
         page_token = events.get('nextPageToken')
         if not page_token:
             break
+        
+ 
 
 
 #Line Notify For PSC Event
@@ -313,7 +315,7 @@ def notify_PSC():
     
 
         url = 'https://notify-api.line.me/api/notify'
-        token = 'm2qR578FQC7qlcj1WUVElQ0Wmq6NPCc6zNfSf2vuaZJ'
+        token = 'be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on'
 
         headers = {
                     'content-type':
@@ -332,7 +334,7 @@ def notify_PSC():
             if i==3:
                 break
             else:
-                msg1 = "เวร :{}".format(event_left[i]["Name:"])
+                msg1 = "{}".format(event_left[i]["Name:"])
                 msg2 = "ประจำวันที่:{}".format(event_left[i]["Time:"])
                 
                 r1 = requests.post(url, headers=headers , data = {'message':msg1})
@@ -357,6 +359,4 @@ else:
 
 if __name__== '__main__':
     
-    app.run(host='127.0.0.1',port=4000)
-    
-    
+    app.run()
