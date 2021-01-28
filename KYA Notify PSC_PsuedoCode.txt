@@ -15,12 +15,10 @@ Notify PSC()
 
 	>>Edit Google Calendar Event()
 Def  Update PSC_Bot()
-	If ������Д and ��Ѿവ���ҧ��Ô :
+	If “¤ÔÂÔâµÐ” and “ÍÑ¾à´µµÒÃÒ§àÇÃ” :
 	>> notify PSC event immediately
 	Else :
 	>> do not notify PSC event
 Update PSC_Bot()	
 
 	
-token :be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on
-1 day = 00.00 am to 17.00pm
