@@ -15,7 +15,7 @@ Notify PSC()
 
 	>>Edit Google Calendar Event()
 Def  Update PSC_Bot()
-	If “¤ÔÂÔâµÐ” and “ÍÑ¾à´µµÒÃÒ§àÇÃ” :
+	If “KiYiTo” and “UpdateEvent” :
 	>> notify PSC event immediately
 	Else :
 	>> do not notify PSC event
