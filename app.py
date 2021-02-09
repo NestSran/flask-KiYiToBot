@@ -2,11 +2,12 @@ from flask import Flask,request,abort
 import requests ##ส่งข้อความกลับLine
 import json ##Line Using Json only
 #from Project.Config import* 
-from datetime import datetime,date
+from datetime import datetime,date,time
 from pprint import pprint
 import sys
 #sys.path.append("D:\\Users\PEA\Desktop\KiYiToBot\Calendar")
 from Project.mygoogle import Create_Service
+from flask_apscheduler import APScheduler
 
 
 app = Flask(__name__)
@@ -228,7 +229,7 @@ str_time_today = datetime.strptime(time_today,"%H:%M:%S")
 get_hour_today = int(str_time_today.strftime("%H"))
 get_minute_today = int(str_time_today.strftime("%M"))
 get_second_today = int(str_time_today.strftime("%S"))
-list_timetoday = [get_hour_today,get_minute_today,get_second_today]
+list_timetoday = [get_hour_today,get_minute_today]
 
 
 
@@ -265,7 +266,7 @@ def call_eventdate():
         get_second = int(convert_back_time.strftime("%S"))
         
 
-        list_timeevent = [get_hour,get_minute,get_second]
+        list_timeevent = [get_hour,get_minute]
         
 
         break
@@ -305,8 +306,7 @@ def left_event():
         page_token = events.get('nextPageToken')
         if not page_token:
             break
-        
- 
+    
 
 
 #Line Notify For PSC Event
@@ -315,7 +315,7 @@ def notify_PSC():
     
 
         url = 'https://notify-api.line.me/api/notify'
-        token = 'be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on'
+        token = 'NGKSUaTPgXGrrqwxpPbv9YpbETNbNT8Bv0oCZ1dBzwk'
 
         headers = {
                     'content-type':
@@ -341,22 +341,29 @@ def notify_PSC():
                 r2 = requests.post(url, headers=headers , data = {'message':msg2})
                 print(r1.text)
                 print(r2.text)
+
         
 
-    
-if list_nowtoday == list_beforedate :
+def scandate():
+    if list_nowtoday == list_beforedate :
 
-    if list_timetoday == list_timeevent:
-    
-            notify_PSC()
+        if list_timetoday == list_timeevent:
+        
+                notify_PSC()
+        else:
+            pass
+
+
     else:
         pass
 
-
-else:
-    pass
-
+#Run Every 8.45am Mon-Fri
+scheduler = APScheduler()
 
 if __name__== '__main__':
-    
+
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron', day_of_week='mon-fri', hour=8, minute=45)
+    scheduler.start()
     app.run()
+
+
