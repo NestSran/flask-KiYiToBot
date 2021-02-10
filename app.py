@@ -362,7 +362,7 @@ scheduler = APScheduler()
 
 if __name__== '__main__':
 
-    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'interval',minutes =30)
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'interval',minutes =1)
     scheduler.start()
     app.run()
 
