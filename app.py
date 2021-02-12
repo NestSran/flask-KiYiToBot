@@ -343,7 +343,7 @@ def notify_PSC():
                 print(r2.text)
 
 print(list_timetoday)
-print(list_date)
+print(list_beforedate)
 print(list_timeevent)
 
 def scandate():
@@ -365,7 +365,7 @@ scheduler = APScheduler()
 
 if __name__== '__main__':
 
-    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'interval',minutes =1)
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-fri', hour=8, minute=45)
     scheduler.start()
     app.run()
 
