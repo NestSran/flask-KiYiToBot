@@ -342,7 +342,9 @@ def notify_PSC():
                 print(r1.text)
                 print(r2.text)
 
-        
+print(list_timetoday)
+print(list_date)
+print(list_timeevent)
 
 def scandate():
     if list_nowtoday == list_beforedate :
@@ -351,11 +353,12 @@ def scandate():
         
                 notify_PSC()
         else:
-            pass
+            print("nottime")
+           
 
 
     else:
-        pass
+        print("1")
 
 #Run Every 8.45am Mon-Fri
 scheduler = APScheduler()
@@ -365,5 +368,6 @@ if __name__== '__main__':
     scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'interval',minutes =1)
     scheduler.start()
     app.run()
+
 
 
