@@ -210,26 +210,28 @@ def ReplyMessage(Reply_token, TextMessage, Line_Acees_Token):
     return 200 
 
 
+def call_todaydate():
+    #Date Today Convert to Int
+    global list_beforeday,list_nowtoday,list_timetoday,isoformat
 
-#Date Today Convert to Int
-yeartoday = int(date.today().strftime("%Y"))
-monthtoday = int(date.today().strftime("%m"))
-beforetoday = int(date.today().strftime("%d"))-1
-nowtoday = int(date.today().strftime("%d"))
-list_beforeday = [yeartoday,monthtoday,beforetoday]
-list_nowtoday = [yeartoday,monthtoday,nowtoday]
+    yeartoday = int(date.today().strftime("%Y"))
+    monthtoday = int(date.today().strftime("%m"))
+    beforetoday = int(date.today().strftime("%d"))-1
+    nowtoday = int(date.today().strftime("%d"))
+    list_beforeday = [yeartoday,monthtoday,beforetoday]
+    list_nowtoday = [yeartoday,monthtoday,nowtoday]
 
 
-#Time Today, Isoformat
-isoformat = datetime.now().isoformat(timespec='seconds')+'Z'
-now_today = datetime.now().isoformat(timespec='seconds')
-time_today = now_today.split("T")[1]
-#Convert Datetime to String and Int
-str_time_today = datetime.strptime(time_today,"%H:%M:%S")
-get_hour_today = int(str_time_today.strftime("%H"))
-get_minute_today = int(str_time_today.strftime("%M"))
-get_second_today = int(str_time_today.strftime("%S"))
-list_timetoday = [get_hour_today,get_minute_today]
+    #Time Today, Isoformat
+    isoformat = datetime.now().isoformat(timespec='seconds')+'Z'
+    now_today = datetime.now().isoformat(timespec='seconds')
+    time_today = now_today.split("T")[1]
+    #Convert Datetime to String and Int
+    str_time_today = datetime.strptime(time_today,"%H:%M:%S")
+    get_hour_today = int(str_time_today.strftime("%H"))
+    get_minute_today = int(str_time_today.strftime("%M"))
+    get_second_today = int(str_time_today.strftime("%S"))
+    list_timetoday = [get_hour_today,get_minute_today]
 
 
 
@@ -271,7 +273,7 @@ def call_eventdate():
 
         break
 
-call_eventdate()
+
 
 #Retrieve Event From GoogleCalendar to Dict
 def left_event():
@@ -342,30 +344,35 @@ def notify_PSC():
                 print(r1.text)
                 print(r2.text)
 
-print(list_timetoday)
-print(list_beforedate)
-print(list_timeevent)
 
 def scandate():
+    
+    print("comein")
+    call_todaydate()
+    left_event()
+    call_eventdate()
+    print(list_timetoday)
+    print(list_timeevent)
+
     if list_nowtoday == list_beforedate :
 
         if list_timetoday == list_timeevent:
         
-                notify_PSC()
+            notify_PSC()
         else:
-            print("nottime")
+            pass
            
 
 
     else:
-        print("1")
+        pass
 
 #Run Every 8.45am Mon-Fri
 scheduler = APScheduler()
 
 if __name__== '__main__':
 
-    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=19, minute=15)
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=21, minute=35)
     scheduler.start()
     app.run()
 
