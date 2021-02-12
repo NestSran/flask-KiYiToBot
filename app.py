@@ -359,19 +359,19 @@ def scandate():
         
             notify_PSC()
         else:
-            pass
+            print("nottime")
            
 
 
     else:
-        pass
+        print("wrong date")
 
 #Run Every 8.45am Mon-Fri
 scheduler = APScheduler()
 
 if __name__== '__main__':
 
-    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=23, minute=35)
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=8, minute=45)
     scheduler.start()
     app.run()
 
