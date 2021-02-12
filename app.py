@@ -371,7 +371,7 @@ scheduler = APScheduler()
 
 if __name__== '__main__':
 
-    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=22, minute=30)
+    scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=8, minute=45)
     scheduler.start()
     app.run()
 
