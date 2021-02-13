@@ -212,7 +212,7 @@ def ReplyMessage(Reply_token, TextMessage, Line_Acees_Token):
 
 def call_todaydate():
     #Date Today Convert to Int
-    global list_beforeday,list_nowtoday,list_timetoday,isoformat
+    global list_beforeday,list_nowtoday,list_timetoday,isoformat_today
 
     yeartoday = int(date.today().strftime("%Y"))
     monthtoday = int(date.today().strftime("%m"))
@@ -223,7 +223,7 @@ def call_todaydate():
 
 
     #Time Today, Isoformat
-    isoformat = datetime.now().isoformat(timespec='seconds')+'Z'
+    isoformat_today = datetime.now().isoformat(timespec='seconds')+'Z'
     now_today = datetime.now().isoformat(timespec='seconds')
     time_today = now_today.split("T")[1]
     #Convert Datetime to String and Int
@@ -237,7 +237,7 @@ def call_todaydate():
 
 #call event date <Google Calendar>
 def call_eventdate(): 
-    events = service.events().list(calendarId='saran.kan.pea@gmail.com',timeZone='Asia/Bangkok',timeMin=isoformat,orderBy='startTime',singleEvents=True,maxResults=1).execute()
+    events = service.events().list(calendarId='saran.kan.pea@gmail.com',timeZone='Asia/Bangkok',timeMin=isoformat_today,orderBy='startTime',singleEvents=True,maxResults=1).execute()
    
     for event in events['items']:
         # StringToInt
@@ -359,12 +359,12 @@ def scandate():
         
             notify_PSC()
         else:
-            print("nottime")
+            pass
            
 
 
     else:
-        print("wrong date")
+        pass
 
 #Run Every 8.45am Mon-Fri
 scheduler = APScheduler()
