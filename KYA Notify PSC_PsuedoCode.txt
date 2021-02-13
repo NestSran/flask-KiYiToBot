@@ -15,16 +15,17 @@ Notify PSC()
 
 	>>Edit Google Calendar Event()
 Def  Update PSC_Bot()
-	If â€œKiYiToâ€ and â€œUpdateEventâ€ :
+	If œKiYiTo and UpdateEvent :
 	>> notify PSC event immediately
 	Else :
 	>> do not notify PSC event
 Update PSC_Bot()	
 
 	
-<<<<<<< HEAD
+----------
 token :be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on
-1 day = 00.00 am to 17.00pm
 ·´ÅÍ§ token : NGKSUaTPgXGrrqwxpPbv9YpbETNbNT8Bv0oCZ1dBzwk
-=======
->>>>>>> 5483c0e50c78eb627ff790f23560a2c08f0aae59
+----------
+heroku sleeping solution
+1.wakeup heroku--> cronjob.org 8.40am
+2.command bot schedule after wakeup-->flask-apschedule (cron) every 8.45am

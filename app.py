@@ -209,11 +209,12 @@ def ReplyMessage(Reply_token, TextMessage, Line_Acees_Token):
     r = requests.post(LINE_API, headers=headers, data=data) 
     return 200 
 
+    
 
 def call_todaydate():
     #Date Today Convert to Int
-    global list_beforeday,list_nowtoday,list_timetoday,isoformat_today
-
+    global list_beforeday,list_nowtoday,list_timetoday
+    global zform_today
     yeartoday = int(date.today().strftime("%Y"))
     monthtoday = int(date.today().strftime("%m"))
     beforetoday = int(date.today().strftime("%d"))-1
@@ -221,9 +222,9 @@ def call_todaydate():
     list_beforeday = [yeartoday,monthtoday,beforetoday]
     list_nowtoday = [yeartoday,monthtoday,nowtoday]
 
-
+    
     #Time Today, Isoformat
-    isoformat_today = datetime.now().isoformat(timespec='seconds')+'Z'
+    zform_today = datetime.now().isoformat(timespec='seconds')+'Z'
     now_today = datetime.now().isoformat(timespec='seconds')
     time_today = now_today.split("T")[1]
     #Convert Datetime to String and Int
@@ -237,7 +238,7 @@ def call_todaydate():
 
 #call event date <Google Calendar>
 def call_eventdate(): 
-    events = service.events().list(calendarId='saran.kan.pea@gmail.com',timeZone='Asia/Bangkok',timeMin=isoformat_today,orderBy='startTime',singleEvents=True,maxResults=1).execute()
+    events = service.events().list(calendarId='saran.kan.pea@gmail.com',timeZone='Asia/Bangkok',timeMin=zform_today,orderBy='startTime',singleEvents=True,maxResults=1).execute()
    
     for event in events['items']:
         # StringToInt
@@ -267,13 +268,9 @@ def call_eventdate():
         get_minute = int(convert_back_time.strftime("%M"))
         get_second = int(convert_back_time.strftime("%S"))
         
-
         list_timeevent = [get_hour,get_minute]
         
-
         break
-
-
 
 #Retrieve Event From GoogleCalendar to Dict
 def left_event():
@@ -283,7 +280,7 @@ def left_event():
     kyt_queue=["Name:","Time:"]
     page_token = None
     while True:
-        events = service.events().list(calendarId='saran.kan.pea@gmail.com', pageToken=page_token,timeZone='Asia/Bangkok',timeMin=isoformat_today ,orderBy='startTime',singleEvents=True,maxResults=100).execute()
+        events = service.events().list(calendarId='saran.kan.pea@gmail.com', pageToken=page_token,timeZone='Asia/Bangkok',timeMin=zform_today,orderBy='startTime',singleEvents=True,maxResults=100).execute()
       
         
         i=0
@@ -301,10 +298,8 @@ def left_event():
                         timevalue= back.split('T')[0]
                         event_left[i][x]=timevalue
                     
-            
             i+=1
        
-                    
         page_token = events.get('nextPageToken')
         if not page_token:
             break
@@ -313,11 +308,13 @@ def left_event():
 
 #Line Notify For PSC Event
 def notify_PSC():
+        
+        call_todaydate()
         left_event()
-    
+        
 
         url = 'https://notify-api.line.me/api/notify'
-        token = 'NGKSUaTPgXGrrqwxpPbv9YpbETNbNT8Bv0oCZ1dBzwk'
+        token = 'be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on'
 
         headers = {
                     'content-type':
@@ -346,12 +343,10 @@ def notify_PSC():
 
 
 def scandate():
-    
-    
+     
     call_todaydate()
     left_event()
     call_eventdate()
-    
 
     if list_nowtoday == list_beforedate :
 
@@ -360,9 +355,6 @@ def scandate():
             notify_PSC()
         else:
             pass
-           
-
-
     else:
         pass
 
