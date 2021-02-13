@@ -283,7 +283,7 @@ def left_event():
     kyt_queue=["Name:","Time:"]
     page_token = None
     while True:
-        events = service.events().list(calendarId='saran.kan.pea@gmail.com', pageToken=page_token,timeZone='Asia/Bangkok',timeMin=isoformat,orderBy='startTime',singleEvents=True,maxResults=100).execute()
+        events = service.events().list(calendarId='saran.kan.pea@gmail.com', pageToken=page_token,timeZone='Asia/Bangkok',timeMin=isoformat_today ,orderBy='startTime',singleEvents=True,maxResults=100).execute()
       
         
         i=0
