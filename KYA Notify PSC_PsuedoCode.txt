@@ -27,5 +27,5 @@ token :be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on
 ·´ÅÍ§ token : NGKSUaTPgXGrrqwxpPbv9YpbETNbNT8Bv0oCZ1dBzwk
 ----------
 heroku sleeping solution
-1.wakeup heroku--> cronjob.org 8.40am
+1.wakeup heroku--> cronjob.org 8.40am (https://cron-job.org/en/)
 2.command bot schedule after wakeup-->flask-apschedule (cron) every 8.45am

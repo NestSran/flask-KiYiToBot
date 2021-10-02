@@ -225,6 +225,7 @@ def call_todaydate():
     
     #Time Today, Isoformat
     zform_today = datetime.now().isoformat(timespec='seconds')+'Z'
+    # print("zform_today=",zform_today)
     now_today = datetime.now().isoformat(timespec='seconds')
     time_today = now_today.split("T")[1]
     #Convert Datetime to String and Int
@@ -285,19 +286,30 @@ def left_event():
         
         i=0
         for event in events['items']:
-            
+            # print("event=",event)
             event_left[i]={}
             
             for x in kyt_queue :    
-                   
+               
                 if x=="Name:" :
                     event_left[i][x]=event['summary']
-                  
+                    # print("event['summary']=",event['summary'])
+               
                 if x=="Time:" :
-                    for front,back in event['start'].items():
-                        timevalue= back.split('T')[0]
-                        event_left[i][x]=timevalue
-                    
+                    print("i=",i)
+                    event_left[i][x]=event['start']['dateTime']
+                    # print("event['start']['dateTime']=",event['start']['dateTime'])
+                    timevalue = event_left[i][x].split('T')[0]
+                    # print("timevalue=",timevalue)
+                    event_left[i][x]=timevalue
+                    # print("event_left_time=",event_left[i][x])
+
+                    # ตัวเก่า Error กรณี Timezone เปลี่ยน
+                    # for front,back in event['start'].items():
+                        # timevalue= back.split('T')[0]
+                        # print("timevalue=",timevalue)
+                        # event_left[i][x]=timevalue
+                        # print("event_left_time=",event_left[i][x])
             i+=1
        
         page_token = events.get('nextPageToken')
@@ -314,7 +326,8 @@ def notify_PSC():
         
 
         url = 'https://notify-api.line.me/api/notify'
-        token = 'be6TEBYJoAZoK0LPIFx774vP57YJxC7T1fXjD4eP0on'
+    
+        token = 'n6kXBjJN2iJjaoSatasdk30Lag3rgb3MzYnSFk5vp1j'
 
         headers = {
                     'content-type':
@@ -326,7 +339,7 @@ def notify_PSC():
        
         msg= intro
         r = requests.post(url, headers=headers , data = {'message':msg})
-        print(r.text)
+        # print("intro=",r.text)
         
 
         for i in event_left :
@@ -338,8 +351,8 @@ def notify_PSC():
                 
                 r1 = requests.post(url, headers=headers , data = {'message':msg1})
                 r2 = requests.post(url, headers=headers , data = {'message':msg2})
-                print(r1.text)
-                print(r2.text)
+                # print("Name=",r1.text)
+                # print("Time=",r2.text)
 
 
 def scandate():
@@ -365,7 +378,7 @@ if __name__== '__main__':
 
     scheduler.add_job(id ='Kiyito Wake Up',func = scandate ,trigger = 'cron',day_of_week='mon-sun', hour=8, minute=45)
     scheduler.start()
-    app.run()
+    app.run(debug=True)
 
 
 

@@ -38,6 +38,24 @@ ngrok http port
 Google Calendar API
 Client ID =1213096575-mt3hgrogm523o73kj90lo4v92ncmhq4d.apps.googleusercontent.com
 Client Secret =1b_vOMFmVCoEINwtLeHx1PGL
+.........................................................................................................
+Line Notify--> Notify
+Line Developer-->Dev
+.........................................................................................................
+Line Notify
+user: nest-moji@hotmail.com
+pass: chocolate_26112535
+..............................................................................
 
-
+token: เลือกว่าจะbotทำงานห้องไหน
+ywWoH64dlib9CdrpX3o65txSTEjTHHqX542iJ9gb5U2
+note!! chanal access token : เลือกว่าจะใช้botตัวไหน
+................................................................................
+webhook url 
+production : https://kiyitobot.herokuapp.com/webhook
+test : https://e841-182-232-151-121.ngrok.io/webhook
+.............................
+google calendar
+user: saran.kan.pea@gmail.com
+pass: saran.kan.pea2535*
 
