@@ -327,7 +327,7 @@ def notify_PSC():
 
         url = 'https://notify-api.line.me/api/notify'
     
-        token = 'n6kXBjJN2iJjaoSatasdk30Lag3rgb3MzYnSFk5vp1j'
+        token = 'P0N3p75PHYKYS0sZ2m8DhWN4niYC7X12wi2gyA05ncX'
 
         headers = {
                     'content-type':
