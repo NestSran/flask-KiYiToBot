@@ -358,7 +358,7 @@ def notify_PSC():
 def scandate():
      
     call_todaydate()
-    left_event()
+    #left_event()
     call_eventdate()
 
     if list_nowtoday == list_beforedate :
@@ -367,9 +367,9 @@ def scandate():
         
             notify_PSC()
         else:
-            pass
+            print("lack condition 1")
     else:
-        pass
+        print("lack condition 2")
 
 #Run Every 8.45am Mon-Fri
 scheduler = APScheduler()
