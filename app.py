@@ -371,7 +371,7 @@ def scandate():
     else:
         print("lack condition 2")
 
-#Run Every 8.45am Mon-Fri
+#Run Every 8.45am Mon-Sun
 scheduler = APScheduler()
 
 if __name__== '__main__':
